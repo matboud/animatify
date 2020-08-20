@@ -1,11 +1,13 @@
 import 'react-native-gesture-handler';
 
-import React, { Component } from 'react'
-import { Text, View, SafeAreaView } from 'react-native';
+import React, { Component } from 'react';
+import { View } from 'react-native'
 
+// recat navigation imports
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+// importing screens
 import Home from './SRC/screens/Home';
 import Saved from './SRC/screens/Saved';
 import About from './SRC/screens/About';
@@ -16,6 +18,7 @@ import Saved_i from './SRC/assets/svg/Saved_i';
 import About_i from './SRC/assets/svg/About_i';
 
 const Tab = createBottomTabNavigator();
+
 export default class App extends Component {
    render() {
       return (
@@ -24,15 +27,33 @@ export default class App extends Component {
                screenOptions={({ route }) => ({
                   tabBarIcon: ({ focused, color, size }) => {
                      if (route.name === 'Home') {
-                        return <Home_i focused={focused} />;
+                        return (
+                           <View style={{
+                              borderBottomWidth: focused ? 1 : 0,
+                              paddingBottom: 4
+                           }}>
+                              <Home_i focused={focused} />
+                           </View>
+
+                        );
                      } else if (route.name === 'Saved') {
-                        return <Saved_i focused={focused} />;
+                        return (
+                           <View style={{
+                              borderBottomWidth: focused ? 1 : 0,
+                              paddingBottom: 4
+                           }}>
+                              <Saved_i focused={focused} />
+                           </View>);
                      } else if (route.name === 'About') {
-                        return <About_i focused={focused} />;
+                        return (
+                           <View style={{
+                              borderBottomWidth: focused ? 1 : 0,
+                              paddingBottom: 4
+                           }}>
+                              <About_i focused={focused} />
+                           </View>
+                        );
                      }
-
-                     // You can return any component that you like here!
-
                   },
                })}
                tabBarOptions={{
